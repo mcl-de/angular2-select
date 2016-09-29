@@ -235,6 +235,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnChanges 
 
             opts[option.value] = {
                 value: option.value,
+                disabled: option.disabled,
                 label: option.label,
                 selected: selected
             };
