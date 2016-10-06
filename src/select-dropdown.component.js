@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var core_1 = require('@angular/core');
 var style_1 = require('./style');
 var diacritics_service_1 = require('./diacritics.service');
@@ -245,60 +236,32 @@ var SelectDropdownComponent = (function () {
         }
         return null;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], SelectDropdownComponent.prototype, "multiple", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], SelectDropdownComponent.prototype, "optionValues", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], SelectDropdownComponent.prototype, "optionsDict", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], SelectDropdownComponent.prototype, "selection", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], SelectDropdownComponent.prototype, "width", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], SelectDropdownComponent.prototype, "top", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], SelectDropdownComponent.prototype, "left", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], SelectDropdownComponent.prototype, "close", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], SelectDropdownComponent.prototype, "toggleSelect", void 0);
-    __decorate([
-        core_1.ViewChild('input'), 
-        __metadata('design:type', Object)
-    ], SelectDropdownComponent.prototype, "input", void 0);
-    __decorate([
-        core_1.ViewChild('optionsList'), 
-        __metadata('design:type', Object)
-    ], SelectDropdownComponent.prototype, "optionsList", void 0);
-    SelectDropdownComponent = __decorate([
-        core_1.Component({
-            selector: 'select-dropdown',
-            template: "\n<span class=\"select2-container select2-container--default select2-container--open\"\n    [ngStyle]=\"{position: 'absolute', top: top + 'px', left: left + 'px'}\">\n    <span class=\"select2-dropdown select2-dropdown--below\"\n        [ngStyle]=\"{width: width + 'px'}\">\n        <span class=\"select2-search select2-search--dropdown\"\n            *ngIf=\"!multiple\">\n            <input class=\"select2-search__field\"\n                #input\n                (input)=\"onInput($event)\"\n                (keydown)=\"onKeydown($event)\"\n                (click)=\"onInputClick($event)\">\n        </span>\n        <span class=\"select2-results\">\n            <ul class=\"select2-results__options\"\n                #optionsList\n                (mousemove)=\"onOptionsMouseMove($event)\"\n                (wheel)=\"onOptionsWheel($event)\"\n                (click)=\"onOptionsClick($event)\">\n                <li\n                    *ngFor=\"let optionValue of optionValuesFiltered;\"\n                    [attr.aria-selected]=\"optionsDict[optionValue].selected\"\n                    [attr.aria-disabled]=\"optionsDict[optionValue].disabled\"\n                    [ngClass]=\"getOptionClass(optionValue)\"\n                    [attr.data-value]=\"optionValue\">\n                    {{optionsDict[optionValue].label}}\n                </li>\n                <li\n                    *ngIf=\"optionValuesFiltered.length === 0\"\n                    [ngClass]=\"getOptionClass(null)\">\n                    {{MSG_NOT_FOUND}}\n                </li>\n            </ul>\n        </span>\n    </span>\n</span>\n",
-            styles: [
-                style_1.DEFAULT_STYLES
-            ]
-        }), 
-        __metadata('design:paramtypes', [diacritics_service_1.DiacriticsService])
-    ], SelectDropdownComponent);
+    SelectDropdownComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'select-dropdown',
+                    template: "\n<span class=\"select2-container select2-container--default select2-container--open\"\n    [ngStyle]=\"{position: 'absolute', top: top + 'px', left: left + 'px'}\">\n    <span class=\"select2-dropdown select2-dropdown--below\"\n        [ngStyle]=\"{width: width + 'px'}\">\n        <span class=\"select2-search select2-search--dropdown\"\n            *ngIf=\"!multiple\">\n            <input class=\"select2-search__field\"\n                #input\n                (input)=\"onInput($event)\"\n                (keydown)=\"onKeydown($event)\"\n                (click)=\"onInputClick($event)\">\n        </span>\n        <span class=\"select2-results\">\n            <ul class=\"select2-results__options\"\n                #optionsList\n                (mousemove)=\"onOptionsMouseMove($event)\"\n                (wheel)=\"onOptionsWheel($event)\"\n                (click)=\"onOptionsClick($event)\">\n                <li\n                    *ngFor=\"let optionValue of optionValuesFiltered;\"\n                    [attr.aria-selected]=\"optionsDict[optionValue].selected\"\n                    [attr.aria-disabled]=\"optionsDict[optionValue].disabled\"\n                    [ngClass]=\"getOptionClass(optionValue)\"\n                    [attr.data-value]=\"optionValue\">\n                    {{optionsDict[optionValue].label}}\n                </li>\n                <li\n                    *ngIf=\"optionValuesFiltered.length === 0\"\n                    [ngClass]=\"getOptionClass(null)\">\n                    {{MSG_NOT_FOUND}}\n                </li>\n            </ul>\n        </span>\n    </span>\n</span>\n",
+                    styles: [
+                        style_1.DEFAULT_STYLES
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    SelectDropdownComponent.ctorParameters = [
+        { type: diacritics_service_1.DiacriticsService, },
+    ];
+    SelectDropdownComponent.propDecorators = {
+        'multiple': [{ type: core_1.Input },],
+        'optionValues': [{ type: core_1.Input },],
+        'optionsDict': [{ type: core_1.Input },],
+        'selection': [{ type: core_1.Input },],
+        'width': [{ type: core_1.Input },],
+        'top': [{ type: core_1.Input },],
+        'left': [{ type: core_1.Input },],
+        'close': [{ type: core_1.Output },],
+        'toggleSelect': [{ type: core_1.Output },],
+        'input': [{ type: core_1.ViewChild, args: ['input',] },],
+        'optionsList': [{ type: core_1.ViewChild, args: ['optionsList',] },],
+    };
     return SelectDropdownComponent;
 }());
 exports.SelectDropdownComponent = SelectDropdownComponent;

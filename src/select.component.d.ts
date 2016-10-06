@@ -1,3 +1,4 @@
+/// <reference types="core-js" />
 import { OnChanges, OnInit, EventEmitter, ExistingProvider } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { SelectDropdownComponent } from './select-dropdown.component';
@@ -19,16 +20,16 @@ export declare class SelectComponent implements ControlValueAccessor, OnInit, On
     selectionSpan: any;
     dropdown: SelectDropdownComponent;
     searchInput: any;
-    private isDisabled;
-    private isBelow;
-    private isOpen;
-    private hasFocus;
-    private width;
-    private top;
-    private left;
-    private optionValues;
-    private optionsDict;
-    private selection;
+    isDisabled: boolean;
+    isBelow: boolean;
+    isOpen: boolean;
+    hasFocus: boolean;
+    width: number;
+    top: number;
+    left: number;
+    optionValues: Array<string>;
+    optionsDict: any;
+    selection: Array<any>;
     value: Array<string>;
     onChange: (_: any) => void;
     onTouched: () => void;
