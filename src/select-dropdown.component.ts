@@ -26,11 +26,12 @@ import {DiacriticsService} from './diacritics.service';
                 <li
                     *ngFor="let optionValue of optionValuesFiltered;"
                     [attr.aria-selected]="optionsDict[optionValue].selected"
+                    [attr.aria-disabled]="optionsDict[optionValue].disabled"
                     [ngClass]="getOptionClass(optionValue)"
                     [attr.data-value]="optionValue">
                     {{optionsDict[optionValue].label}}
                 </li>
-                <li 
+                <li
                     *ngIf="optionValuesFiltered.length === 0"
                     [ngClass]="getOptionClass(null)">
                     {{MSG_NOT_FOUND}}
@@ -118,7 +119,7 @@ export class SelectDropdownComponent implements AfterViewInit, OnChanges, OnInit
     onOptionsClick(event: any) {
         let val = event.target.dataset.value;
 
-        if (typeof val !== 'undefined') {
+        if (typeof val !== 'undefined' && !this.optionsDict[event.target.dataset.value].disabled) {
             this.toggleSelect.emit(val);
         }
         else {
@@ -168,8 +169,13 @@ export class SelectDropdownComponent implements AfterViewInit, OnChanges, OnInit
     }
 
     private highlight(optionValue: string) {
-        if (this.highlighted === null ||
-            optionValue !== this.highlighted.value) {
+        let option = this.optionsDict[optionValue];
+        if (
+            (
+                this.highlighted === null ||
+                optionValue !== this.highlighted.value
+            ) && !option.disabled
+        ) {
             this._highlighted = this.optionsDict[optionValue];
         }
     }
@@ -352,4 +358,3 @@ export class SelectDropdownComponent implements AfterViewInit, OnChanges, OnInit
         return null;
     }
 }
-
