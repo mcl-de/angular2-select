@@ -1,4 +1,3 @@
-/// <reference types="core-js" />
 import { OnChanges, OnInit, EventEmitter, ExistingProvider } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { SelectDropdownComponent } from './select-dropdown.component';

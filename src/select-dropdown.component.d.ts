@@ -1,4 +1,3 @@
-/// <reference types="core-js" />
 import { AfterViewInit, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { DiacriticsService } from './diacritics.service';
 export declare class SelectDropdownComponent implements AfterViewInit, OnChanges, OnInit {
