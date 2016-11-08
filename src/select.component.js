@@ -249,7 +249,9 @@ var SelectComponent = (function () {
         if (this.multiple) {
             for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
                 var item = value_1[_i];
-                this.optionsDict[item].selected = true;
+                if (item in this.optionsDict) {
+                    this.optionsDict[item].selected = true;
+                }
             }
         }
         else if (value !== '') {

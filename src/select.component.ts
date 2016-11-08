@@ -385,7 +385,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnChanges 
 
         if (this.multiple) {
             for (let item of value) {
-                this.optionsDict[item].selected = true;
+                if (item in this.optionsDict) {
+                    this.optionsDict[item].selected = true;
+                }
             }
         }
         else if (value !== '') {
