@@ -242,7 +242,8 @@ var SelectDropdownComponent = (function () {
                     template: "\n<span class=\"select2-container select2-container--default select2-container--open\"\n    [ngStyle]=\"{position: 'absolute', top: top + 'px', left: left + 'px'}\">\n    <span class=\"select2-dropdown select2-dropdown--below\"\n        [ngStyle]=\"{width: width + 'px'}\">\n        <span class=\"select2-search select2-search--dropdown\"\n            *ngIf=\"!multiple\">\n            <input class=\"select2-search__field\"\n                #input\n                (input)=\"onInput($event)\"\n                (keydown)=\"onKeydown($event)\"\n                (click)=\"onInputClick($event)\">\n        </span>\n        <span class=\"select2-results\">\n            <ul class=\"select2-results__options\"\n                #optionsList\n                (mousemove)=\"onOptionsMouseMove($event)\"\n                (wheel)=\"onOptionsWheel($event)\"\n                (click)=\"onOptionsClick($event)\">\n                <li\n                    *ngFor=\"let optionValue of optionValuesFiltered;\"\n                    [attr.aria-selected]=\"optionsDict[optionValue].selected\"\n                    [attr.aria-disabled]=\"optionsDict[optionValue].disabled\"\n                    [ngClass]=\"getOptionClass(optionValue)\"\n                    [attr.data-value]=\"optionValue\">\n                    {{optionsDict[optionValue].label}}\n                </li>\n                <li\n                    *ngIf=\"optionValuesFiltered.length === 0\"\n                    [ngClass]=\"getOptionClass(null)\">\n                    {{MSG_NOT_FOUND}}\n                </li>\n            </ul>\n        </span>\n    </span>\n</span>\n",
                     styles: [
                         style_1.DEFAULT_STYLES
-                    ]
+                    ],
+                    encapsulation: core_1.ViewEncapsulation.None
                 },] },
     ];
     /** @nocollapse */

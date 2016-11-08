@@ -1,17 +1,7 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var style_1 = require("./style");
-var select_dropdown_component_1 = require("./select-dropdown.component");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var style_1 = require('./style');
 exports.SELECT_VALUE_ACCESSOR = { provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return SelectComponent; }),
     multi: true
@@ -384,72 +374,36 @@ var SelectComponent = (function () {
             'width': width + 'px'
         };
     };
+    SelectComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'ng-select',
+                    template: "\n<div style=\"width:100%;position:relative;\">\n    <span style=\"width:100%\"\n        #container\n        [ngClass]=\"getContainerClass()\"\n        (window:resize)=\"onWindowResize()\"\n        (window:click)=\"onWindowClick()\">\n        <span class=\"selection\">\n            <span tabindex=0\n                #selectionSpan\n                [ngClass]=\"getSelectionClass()\"\n                (click)=\"onSelectionClick($event)\"\n                (keydown)=\"onKeydown($event)\">\n\n                <span class=\"select2-selection__rendered\"\n                    *ngIf=\"!multiple\">\n                    <span class=\"select2-selection__placeholder\">\n                        {{getPlaceholder()}}\n                    </span>\n                </span>\n\n                <span class=\"select2-selection__rendered\"\n                    *ngIf=\"!multiple && selection.length > 0\">\n                    <span class=\"select2-selection__clear\"\n                        *ngIf=\"allowClear\"\n                        (click)=\"onClearClick($event)\">\n                        x\n                    </span>\n                    {{selection[0].label}}\n                </span>\n\n                <ul class=\"select2-selection__rendered\"\n                    *ngIf=\"multiple\">\n                    <li class=\"select2-selection__choice\" title=\"{{option.label}}\"\n                        *ngFor=\"let option of selection\">\n                        <span class=\"select2-selection__choice__remove\"\n                            [attr.data-value]=\"option.value\"\n                            (click)=onClearItemClick($event)>\n                            \u00D7</span>\n                        {{option.label}}\n                    </li>\n                    <li class=\"select2-search select2-search--inline\">\n                        <input class=\"select2-search__field\"\n                            #searchInput\n                            placeholder=\"{{getPlaceholder()}}\"\n                            [ngStyle]=\"getInputStyle()\"\n                            (input)=\"onInput($event)\"\n                            (keydown)=\"onSearchKeydown($event)\"/>\n                    </li>\n                </ul>\n\n                <span class=\"select2-selection__arrow\">\n                    <b></b>\n                </span>\n            </span>\n        </span>\n    </span>\n    <select-dropdown\n        *ngIf=\"isOpen\"\n        #dropdown\n        [multiple]=\"multiple\"\n        [optionValues]=\"optionValues\"\n        [optionsDict]=\"optionsDict\"\n        [selection]=\"selection\"\n        [width]=\"width\"\n        [top]=\"top\"\n        [left]=\"left\"\n        (toggleSelect)=\"onToggleSelect($event)\"\n        (close)=\"onClose($event)\">\n    </select-dropdown>\n</div>\n",
+                    styles: [
+                        style_1.DEFAULT_STYLES
+                    ],
+                    encapsulation: core_1.ViewEncapsulation.None,
+                    providers: [
+                        exports.SELECT_VALUE_ACCESSOR
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    SelectComponent.ctorParameters = [];
+    SelectComponent.propDecorators = {
+        'options': [{ type: core_1.Input },],
+        'theme': [{ type: core_1.Input },],
+        'multiple': [{ type: core_1.Input },],
+        'placeholder': [{ type: core_1.Input },],
+        'allowClear': [{ type: core_1.Input },],
+        'opened': [{ type: core_1.Output },],
+        'closed': [{ type: core_1.Output },],
+        'selected': [{ type: core_1.Output },],
+        'deselected': [{ type: core_1.Output },],
+        'container': [{ type: core_1.ViewChild, args: ['container',] },],
+        'selectionSpan': [{ type: core_1.ViewChild, args: ['selectionSpan',] },],
+        'dropdown': [{ type: core_1.ViewChild, args: ['dropdown',] },],
+        'searchInput': [{ type: core_1.ViewChild, args: ['searchInput',] },],
+    };
     return SelectComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], SelectComponent.prototype, "options", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], SelectComponent.prototype, "theme", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], SelectComponent.prototype, "multiple", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], SelectComponent.prototype, "placeholder", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], SelectComponent.prototype, "allowClear", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], SelectComponent.prototype, "opened", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], SelectComponent.prototype, "closed", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], SelectComponent.prototype, "selected", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], SelectComponent.prototype, "deselected", void 0);
-__decorate([
-    core_1.ViewChild('container'),
-    __metadata("design:type", Object)
-], SelectComponent.prototype, "container", void 0);
-__decorate([
-    core_1.ViewChild('selectionSpan'),
-    __metadata("design:type", Object)
-], SelectComponent.prototype, "selectionSpan", void 0);
-__decorate([
-    core_1.ViewChild('dropdown'),
-    __metadata("design:type", select_dropdown_component_1.SelectDropdownComponent)
-], SelectComponent.prototype, "dropdown", void 0);
-__decorate([
-    core_1.ViewChild('searchInput'),
-    __metadata("design:type", Object)
-], SelectComponent.prototype, "searchInput", void 0);
-SelectComponent = __decorate([
-    core_1.Component({
-        selector: 'ng-select',
-        template: "\n<div style=\"width:100%;position:relative;\">\n    <span style=\"width:100%\"\n        #container\n        [ngClass]=\"getContainerClass()\"\n        (window:resize)=\"onWindowResize()\"\n        (window:click)=\"onWindowClick()\">\n        <span class=\"selection\">\n            <span tabindex=0\n                #selectionSpan\n                [ngClass]=\"getSelectionClass()\"\n                (click)=\"onSelectionClick($event)\"\n                (keydown)=\"onKeydown($event)\">\n\n                <span class=\"select2-selection__rendered\"\n                    *ngIf=\"!multiple\">\n                    <span class=\"select2-selection__placeholder\">\n                        {{getPlaceholder()}}\n                    </span>\n                </span>\n\n                <span class=\"select2-selection__rendered\"\n                    *ngIf=\"!multiple && selection.length > 0\">\n                    <span class=\"select2-selection__clear\"\n                        *ngIf=\"allowClear\"\n                        (click)=\"onClearClick($event)\">\n                        x\n                    </span>\n                    {{selection[0].label}}\n                </span>\n\n                <ul class=\"select2-selection__rendered\"\n                    *ngIf=\"multiple\">\n                    <li class=\"select2-selection__choice\" title=\"{{option.label}}\"\n                        *ngFor=\"let option of selection\">\n                        <span class=\"select2-selection__choice__remove\"\n                            [attr.data-value]=\"option.value\"\n                            (click)=onClearItemClick($event)>\n                            \u00D7</span>\n                        {{option.label}}\n                    </li>\n                    <li class=\"select2-search select2-search--inline\">\n                        <input class=\"select2-search__field\"\n                            #searchInput\n                            placeholder=\"{{getPlaceholder()}}\"\n                            [ngStyle]=\"getInputStyle()\"\n                            (input)=\"onInput($event)\"\n                            (keydown)=\"onSearchKeydown($event)\"/>\n                    </li>\n                </ul>\n\n                <span class=\"select2-selection__arrow\">\n                    <b></b>\n                </span>\n            </span>\n        </span>\n    </span>\n    <select-dropdown\n        *ngIf=\"isOpen\"\n        #dropdown\n        [multiple]=\"multiple\"\n        [optionValues]=\"optionValues\"\n        [optionsDict]=\"optionsDict\"\n        [selection]=\"selection\"\n        [width]=\"width\"\n        [top]=\"top\"\n        [left]=\"left\"\n        (toggleSelect)=\"onToggleSelect($event)\"\n        (close)=\"onClose($event)\">\n    </select-dropdown>\n</div>\n",
-        styles: [
-            style_1.DEFAULT_STYLES
-        ],
-        encapsulation: core_1.ViewEncapsulation.None,
-        providers: [
-            exports.SELECT_VALUE_ACCESSOR
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], SelectComponent);
 exports.SelectComponent = SelectComponent;

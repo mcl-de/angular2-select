@@ -39,7 +39,14 @@ export declare class SelectComponent implements ControlValueAccessor, OnInit, On
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
     onSelectionClick(event: any): void;
-    onClearAllClick(event: any): void;
+    /**
+     * Event handler of the single select clear (x) button click. It is assumed
+     * that there is exactly one item selected.
+     *
+     * The `deselect` method is used instead of `clear`, to heve the deselected
+     * event emitted.
+     */
+    onClearClick(event: any): void;
     onClearItemClick(event: any): void;
     onToggleSelect(optionValue: any): void;
     onClose(focus: any): void;
@@ -68,7 +75,7 @@ export declare class SelectComponent implements ControlValueAccessor, OnInit, On
     deselect(value: string): void;
     updateSelection(): void;
     popSelect(): void;
-    clearSelected(): void;
+    clear(): void;
     getOutputValue(): any;
     /***************************************************************************
      * ControlValueAccessor interface methods.
